@@ -24,7 +24,7 @@ class TableRow extends Component {
             {this.props.obj.name}
           </td>
           <td>
-            {this.props.obj.port}
+            {this.props.obj.dpt}
           </td>
           <td>
           <Link to={"/edit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>

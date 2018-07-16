@@ -11,13 +11,13 @@ export default class EditComponent extends Component {
         this.onChangePort = this.onChangePort.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {name: '', port: ''};
+        this.state = {name: '', dpt: ''};
     }
 
     componentDidMount() {
         axios.get('http://localhost:4200/serverport/edit/'+this.props.match.params.id)
             .then(response => {
-                this.setState({ name: response.data.name, port: response.data.port });
+                this.setState({ name: response.data.name, dpt: response.data.dpt });
             })
             .catch(function (error) {
                 console.log(error);
@@ -31,20 +31,20 @@ export default class EditComponent extends Component {
     }
     onChangePort(e) {
         this.setState({
-            port: e.target.value
+            dpt: e.target.value
         });
     }
     onSubmit(e) {
         e.preventDefault();
         const serverport = {
             name: this.state.name,
-            port: this.state.port
+            dpt: this.state.dpt
         }
         axios.post('http://localhost:4200/serverport/update/'+this.props.match.params.id, serverport)
-        .then(res => console.log(res.data));
+        .then(res => console.log(res.data + this.state.dpt));
         this.setState({
             name: '',
-            port: ''
+            dpt: ''
         })
         this.props.history.push('/index');
     }
@@ -55,12 +55,12 @@ export default class EditComponent extends Component {
                 <h3>Edit New Server</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Add Host Name:  </label>
+                        <label>Project name:  </label>
                         <input type="text" value={this.state.name} className="form-control" onChange={this.onChangeHostName}/>
                     </div>
                     <div className="form-group">
-                        <label>Add Server Port: </label>
-                        <input type="text" value={this.state.port} className="form-control" onChange={this.onChangePort}/>
+                        <label>Department: </label>
+                        <input type="text" value={this.state.dpt} className="form-control" onChange={this.onChangePort}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Update server" className="btn btn-primary"/>

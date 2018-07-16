@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateComponent extends Component {
+export default class newRequest extends Component {
 
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ export default class CreateComponent extends Component {
 
         this.state = {
             name: '',
-            port: ''
+            dpt: ''
         }
     }
     onChangeHostName(e) {
@@ -23,35 +23,35 @@ export default class CreateComponent extends Component {
     }
     onChangePort(e) {
         this.setState({
-            port: e.target.value
+            dpt: e.target.value
         });
     }
     onSubmit(e) {
         e.preventDefault();
         const serverport = {
             name: this.state.name,
-            port: this.state.port
+            dpt: this.state.dpt
         }
         axios.post('http://localhost:4200/serverport/add', serverport)
         .then(res => console.log(res.data));
         this.setState({
             name: '',
-            port: ''
+            dpt: ''
         })
     }
 
     render() {
         return (
             <div style={{marginTop: 50}}>
-                <h3>Add New Server</h3>
+                <h3>New request</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Add Host Name:  </label>
+                        <label>Project name:  </label>
                         <input type="text" value={this.state.name} className="form-control" onChange={this.onChangeHostName}/>
                     </div>
                     <div className="form-group">
-                        <label>Add Server Port: </label>
-                        <input type="text" value={this.state.port} className="form-control" onChange={this.onChangePort}/>
+                        <label>Department: </label>
+                        <input type="text" value={this.state.dpt} className="form-control" onChange={this.onChangePort}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Add Node server" className="btn btn-primary"/>

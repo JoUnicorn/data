@@ -8,8 +8,8 @@ var ServerPort = new Schema({
   name: {
     type: String
   },
-  port: {
-      type: Number
+  dpt: {
+      type: String
   }
 },{
     collection: 'servers'

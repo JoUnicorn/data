@@ -33,7 +33,7 @@ export default class IndexComponent extends Component {
                 <tr>
                   <td>ID</td>
                   <td>Name</td>
-                  <td>Port</td>
+                  <td>Department</td>
                 </tr>
               </thead>
               <tbody>

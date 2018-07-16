@@ -42,7 +42,7 @@ ServerPortRouter.route('/update/:id').post(function (req, res) {
     else {
       // do your updates here
       serverport.name = req.body.name;
-      serverport.port = req.body.port;
+      serverport.dpt = req.body.dpt;
 
       serverport.save().then(serverport => {
           res.json('Update complete');
