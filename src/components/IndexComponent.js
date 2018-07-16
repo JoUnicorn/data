@@ -27,13 +27,15 @@ export default class IndexComponent extends Component {
 
     render() {
       return (
-        <div className="container">
+        <div className="container" style={{marginTop: 50}}>
             <table className="table table-striped">
               <thead>
                 <tr>
                   <td>ID</td>
                   <td>Name</td>
                   <td>Department</td>
+                  <td>Edit</td>
+                  <td>Delete</td>
                 </tr>
               </thead>
               <tbody>
